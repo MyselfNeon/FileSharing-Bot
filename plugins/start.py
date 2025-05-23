@@ -169,7 +169,7 @@ async def not_joined(client: Client, message: Message):
 async def get_users(client: Bot, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text=f"Pʀᴏᴄᴇssɪɴɢ...☢️")
     users = await full_userbase()
-    await msg.edit(f"{len(users)} <b><i>Users Are Using This Bot</i></b>")
+    await msg.edit(f"{len(users)} <b><i>Usᴇʀs Aʀᴇ Usɪɴɢ Tʜɪs Bᴏᴛ</i></b>")
 
 
 
@@ -184,7 +184,7 @@ async def send_text(client: Bot, message: Message):
         deleted = 0
         unsuccessful = 0
         
-        pls_wait = await message.reply("<i><b>Broadcasting Message.. This will Take Some Time</b></i>")
+        pls_wait = await message.reply("<i><b>📢 Bʀᴏᴀᴅᴄᴀsᴛɪɴɢ Mᴇssᴀɢᴇs... \nTʜɪs Wɪʟʟ Tᴀᴋᴇ Sᴏᴍᴇ Tɪᴍᴇ</b></i>")
         for chat_id in query:
             try:
                 await broadcast_msg.copy(chat_id)
@@ -204,18 +204,18 @@ async def send_text(client: Bot, message: Message):
                 pass
             total += 1
         
-        status = f"""<b><u>Broadcast Completed</u></b>
+        status = f"""<b><u>__Bʀᴏᴀᴅᴄᴀsᴛ Cᴏᴍᴘʟᴇᴛᴇᴅ__</u></b>
 
-<b>Total Users :</b> <code>{total}</code>
-<b>Successful :</b> <code>{successful}</code>
-<b>Blocked Users :</b> <code>{blocked}</code>
-<b>Deleted Accounts :</b> <code>{deleted}</code>
-<b>Unsuccessful :</b> <code>{unsuccessful}</code>"""
+<b>__Tᴏᴛᴀʟ ᴜsᴇʀs__ : <code>{total}</code></b>
+<b>__Sᴜᴄᴄᴇssғᴜʟ__ : <code>{successful}</code></b>
+<b>__Bʟᴏᴄᴋᴇᴅ Usᴇʀs__ : <code>{blocked}</code></b>
+<b>__Dᴇʟᴇᴛᴇᴅ Aᴄᴄᴏᴜɴᴛs__ : <code>{deleted}</code></b>
+<b>__Uɴsᴜᴄᴄᴇssғᴜʟ__ : <code>{unsuccessful}</code></b>"""
         
         return await pls_wait.edit(status)
 
     else:
-        msg = await message.reply(f"<b><i>Use This Command As A Reply To Any Telegram Message With Out Any Spaces.</i></b>")
+        msg = await message.reply(f"<b><i>Usᴇ Tʜɪs Cᴏᴍᴍᴀɴᴅ As ᴀ Rᴇᴘʟʏ ᴛᴏ Aɴʏ Tᴇʟᴇɢʀᴀᴍ Mᴇssᴀɢᴇ Wɪᴛʜoᴜᴛ Aɴʏ Sᴘᴀᴄᴇs.</i></b>")
         await asyncio.sleep(8)
         await msg.delete()
 
