@@ -60,7 +60,7 @@ USER_REPLY_TEXT = "<b><i>Pʟᴇᴀsᴇ Dᴏɴ'ᴛ Sᴇɴᴅ Mᴇ Mᴇssᴀɢᴇs
 
 START_MSG = os.environ.get("START_MESSAGE", "<b><i>Hᴇʟʟᴏ {mention}\n\nI ᴀᴍ Pᴇʀᴍᴀɴᴇɴᴛ Fɪʟᴇ Sᴛᴏʀᴇ Bᴏᴛ.\nDᴇᴠᴇʟᴏᴘᴇᴅ Bʏ <a href='https://t.me/MyselfNeon'>NᴇᴏɴAɴᴜʀᴀɢ</a>.\n\nGᴇᴛ Rᴇᴅɪʀᴇᴄᴛᴇᴅ Fʀᴏᴍ Cᴏʀʀᴇᴄᴛ Lɪɴᴋs Tᴏ Gᴇᴛ Tʜᴇ Fɪʟᴇs 🖇️</i></b>")
 
-FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "<b><i>Hello {mention}\n\nYou Need To Join In My Channel/Group To Use Me\n\n</i></b>")
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "<b><i>Hᴇʟʟᴏ {mention}\n\nYᴏᴜ Nᴇᴇᴅ ᴛᴏ Jᴏɪɴ ɪɴ Mʏ Cʜᴀɴɴᴇʟ/Gʀᴏᴜᴘ ᴛᴏ Usᴇ Mᴇ\n\n</i></b>")
 
 
 
