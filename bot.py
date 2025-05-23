@@ -38,9 +38,9 @@ class Bot(Client):
                 self.invitelink = link
             except Exception as a:
                 self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning("Bot Can't Export Invite link From Force Sub Channel!")
-                self.LOGGER(__name__).warning(f"Please Double Check The FORCE_SUB_CHANNEL Value And Make Sure Bot Is Admin In Channel With Invite Users Via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL}")
-                self.LOGGER(__name__).info("\nBot Stopped. https://t.me/onionxbot For Support")
+                self.LOGGER(__name__).warning("Bᴏᴛ Cᴀɴ'ᴛ Exᴘᴏʀᴛ Iɴᴠɪᴛᴇ Lɪɴᴋ Fʀᴏᴍ Fᴏʀᴄᴇ Sᴜʙ Cʜᴀɴɴᴇʟ!")
+                self.LOGGER(__name__).warning(f"Pʟᴇᴀsᴇ Dᴏᴜʙʟᴇ Cʜᴇᴄᴋ Tʜᴇ FORCE_SUB_CHANNEL Vᴀʟᴜᴇ Aɴᴅ Mᴀᴋᴇ Sᴜʀᴇ Bᴏᴛ ɪs Aᴅᴍɪɴ ɪɴ Cʜᴀɴɴᴇʟ Wɪᴛʜ Iɴᴠɪᴛᴇ Usᴇʀs Vɪᴀ Lɪɴᴋ Pᴇʀᴍɪssɪᴏɴ, Cᴜʀʀᴇɴᴛ Fᴏʀᴄᴇ Sᴜʙ Cʜᴀɴɴᴇʟ Vᴀʟᴜᴇ: {FORCE_SUB_CHANNEL}")
+                self.LOGGER(__name__).info("\nBᴏᴛ Sᴛᴏᴘᴘᴇᴅ. https://t.me/MyselfNeon Fᴏʀ Sᴜᴘᴘᴏʀᴛ")
                 sys.exit()
 
         try:
@@ -56,7 +56,7 @@ class Bot(Client):
 
         self.set_parse_mode(ParseMode.HTML)
         self.LOGGER(__name__).info(f"Bᴏᴛ Rᴜɴɴɪɴɢ...!\n\nCʀᴇᴀᴛᴇᴅ Bʏ \nhttps://t.me/NeonFiles")
-        self.LOGGER(__name__).info(f"""ミ💖 NEONFILES 💖彡""")
+        self.LOGGER(__name__).info(f"""ミ💖✨ NEONFILES ✨💖彡""")
         self.username = usr_bot_me.username
         #web-response
         app = web.AppRunner(await web_server())
