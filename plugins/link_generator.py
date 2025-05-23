@@ -22,7 +22,7 @@ async def batch(client: Client, message: Message):
 
     while True:
         try:
-            second_message = await client.ask(text = "<b><i>Forward The Last Message From DB Channel (With Quotes)..\n\nOr Send The DB Channel Post Link</i></b>", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
+            second_message = await client.ask(text = "<b><i>Fᴏʀᴡᴀʀᴅ Tʜᴇ Lᴀsᴛ Mᴇssᴀɢᴇ Fʀᴏᴍ DB Cʜᴀɴɴᴇʟ (Wɪᴛʜ Qᴜᴏᴛᴇs)..\n\nOʀ Sᴇɴᴅ Tʜᴇ DB Cʜᴀɴɴᴇʟ Pᴏsᴛ Lɪɴᴋ</i></b>", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
         except:
             return
         s_msg_id = await get_message_id(client, second_message)
