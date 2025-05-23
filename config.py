@@ -48,7 +48,7 @@ PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" e
 
 DISABLE_CHANNEL_BUTTON = True if os.environ.get('DISABLE_CHANNEL_BUTTON', "True") == "True" else False
 
-BOT_STATS_TEXT = "<b>__Bᴏᴛ Uᴘᴛɪᴍᴇ__ :</b>\n{uptime}"
+BOT_STATS_TEXT = "<b><i>Bᴏᴛ Uᴘᴛɪᴍᴇ</i> :</b>\n{uptime}"
 
 
 
