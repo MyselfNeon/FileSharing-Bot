@@ -10,14 +10,14 @@ from helper_func import encode, get_message_id
 async def batch(client: Client, message: Message):
     while True:
         try:
-            first_message = await client.ask(text = "<b><i>Forward The First Message From DB Channel (With Quotes)..\n\nOr Send The DB Channel Post Link</i></b>", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
+            first_message = await client.ask(text = "<b><i>Fᴏʀᴡᴀʀᴅ Tʜᴇ Fɪʀsᴛ Nᴇssᴀɢᴇ Fʀᴏᴍ DB Cʜᴀɴɴᴇʟ (Wɪᴛʜ Qᴜᴏᴛᴇs)..\n\Oʀ Sᴇɴᴅ Tʜᴇ DB Cʜᴀɴɴᴇʟ Pᴏsᴛ Lɪɴᴋ</i></b>", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
         except:
             return
         f_msg_id = await get_message_id(client, first_message)
         if f_msg_id:
             break
         else:
-            await first_message.reply("<b><i>❌ Error\n\nThis Forwarded Post Is Not From My DB Channel Or This Link Is Not Taken From DB Channel</i></b>", quote = True)
+            await first_message.reply("<b><i>❌ Eʀʀᴏʀ\n\nTʜɪs Fᴏʀᴡᴀʀᴅᴇᴅ Pᴏsᴛ ɪs Nᴏᴛ Fʀᴏᴍ ᴍʏ DB Cʜᴀɴɴᴇʟ ᴏʀ Tʜɪs Lɪɴᴋ ɪs Nᴏᴛ Tᴀᴋᴇɴ Fʀᴏᴍ DB Cʜᴀɴɴᴇʟ</i></b>", quote = True)
             continue
 
     while True:
