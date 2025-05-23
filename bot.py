@@ -50,12 +50,12 @@ class Bot(Client):
             await test.delete()
         except Exception as e:
             self.LOGGER(__name__).warning(e)
-            self.LOGGER(__name__).warning(f"Make Sure Bot Is Admin In DB Channel, And Double Check The CHANNEL_ID Value, Current Value: {CHANNEL_ID}")
-            self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/NeonFiles For Support")
+            self.LOGGER(__name__).warning(f"Mᴀᴋᴇ Sᴜʀᴇ Bᴏᴛ ɪs Aᴅᴍɪɴ ɪɴ DB Cʜᴀɴɴᴇʟ, Aɴᴅ Dᴏᴜʙʟᴇ Cʜᴇᴄᴋ Tʜᴇ CHANNEL_ID Vᴀʟᴜᴇ, Cᴜʀʀᴇɴᴛ Vᴀʟᴜᴇ: {CHANNEL_ID}")
+            self.LOGGER(__name__).info("\nBᴏᴛ Sᴛᴏᴘᴘᴇᴅ. Jᴏɪɴ https://t.me/NeonFiles Fᴏʀ Sᴜᴘᴘᴏʀᴛ")
             sys.exit()
 
         self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER(__name__).info(f"Bot Running...!\n\nCreated By \nhttps://t.me/NeonFiles")
+        self.LOGGER(__name__).info(f"Bᴏᴛ Rᴜɴɴɪɴɢ...!\n\nCʀᴇᴀᴛᴇᴅ Bʏ \nhttps://t.me/NeonFiles")
         self.LOGGER(__name__).info(f"""ミ💖 NEONFILES 💖彡""")
         self.username = usr_bot_me.username
         #web-response
@@ -66,7 +66,7 @@ class Bot(Client):
 
     async def stop(self, *args):
         await super().stop()
-        self.LOGGER(__name__).info("Bot Stopped...")
+        self.LOGGER(__name__).info("Bᴏᴛ Sᴛᴏᴘᴘᴇᴅ...❌")
             
 
 
