@@ -48,7 +48,7 @@ PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" e
 
 DISABLE_CHANNEL_BUTTON = True if os.environ.get('DISABLE_CHANNEL_BUTTON', "True") == "True" else False
 
-BOT_STATS_TEXT = "<b>BOT UPTIME :</b>\n{uptime}"
+BOT_STATS_TEXT = "<b>__Bᴏᴛ Uᴘᴛɪᴍᴇ__ :</b>\n{uptime}"
 
 
 
@@ -56,9 +56,9 @@ BOT_STATS_TEXT = "<b>BOT UPTIME :</b>\n{uptime}"
 
 
 
-USER_REPLY_TEXT = "<b><i>Please don't Send Me Messages Directly I am just File Sharing Bot 😄</i></b>"
+USER_REPLY_TEXT = "<b><i>Pʟᴇᴀsᴇ Dᴏɴ'ᴛ Sᴇɴᴅ Mᴇ Mᴇssᴀɢᴇs Dɪʀᴇᴄᴛʟʏ I Aᴍ Jᴜsᴛ Fɪʟᴇ Sʜᴀʀɪɴɢ Bᴏᴛ 🫣</i></b>"
 
-START_MSG = os.environ.get("START_MESSAGE", "<b><i>Hello {mention}\n\nI am Permanent File Store Bot.\nDeveloped by <a href='https://t.me/MyselfNeon'>NeonAnurag</a>.\n\nGet Redirected from Correct Links to get the Files 🖇️</i></b>")
+START_MSG = os.environ.get("START_MESSAGE", "<b><i>Hᴇʟʟᴏ {mention}\n\nI ᴀᴍ Pᴇʀᴍᴀɴᴇɴᴛ Fɪʟᴇ Sᴛᴏʀᴇ Bᴏᴛ.\nDᴇᴠᴇʟᴏᴘᴇᴅ Bʏ <a href='https://t.me/MyselfNeon'>NᴇᴏɴAɴᴜʀᴀɢ</a>.\n\nGᴇᴛ Rᴇᴅɪʀᴇᴄᴛᴇᴅ Fʀᴏᴍ Cᴏʀʀᴇᴄᴛ Lɪɴᴋs Tᴏ Gᴇᴛ Tʜᴇ Fɪʟᴇs 🖇️</i></b>")
 
 FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "<b><i>Hello {mention}\n\nYou Need To Join In My Channel/Group To Use Me\n\n</i></b>")
 
