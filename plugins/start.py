@@ -167,7 +167,7 @@ async def not_joined(client: Client, message: Message):
 
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
-    msg = await client.send_message(chat_id=message.chat.id, text=f"__**Pʀᴏᴄᴇssɪɴɢ...☢️**__")
+    msg = await client.send_message(chat_id=message.chat.id, text=f"Pʀᴏᴄᴇssɪɴɢ...☢️")
     users = await full_userbase()
     await msg.edit(f"{len(users)} <b><i>Usᴇʀs Aʀᴇ Usɪɴɢ Tʜɪs Bᴏᴛ</i></b>")
 
