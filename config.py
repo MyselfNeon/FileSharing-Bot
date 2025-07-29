@@ -2,29 +2,21 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 
-
-
-
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 API_ID = int(os.environ.get("API_ID", ""))
 API_HASH = os.environ.get("API_HASH", "")
-
 
 OWNER_ID = int(os.environ.get("OWNER_ID", "841851780"))
 DB_URL = os.environ.get("DB_URL", "")
 DB_NAME = os.environ.get("DB_NAME", "MyselfNeon")
 
-
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002487845241"))
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002384933640"))
 
-
 FILE_AUTO_DELETE = int(os.getenv("FILE_AUTO_DELETE", "300")) # auto delete in seconds
-
 
 PORT = os.environ.get("PORT", "8080")
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
-
 
 
 try:
@@ -33,13 +25,6 @@ try:
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
-
-
-
-
-
-
-
 
 
 CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
@@ -51,19 +36,11 @@ DISABLE_CHANNEL_BUTTON = True if os.environ.get('DISABLE_CHANNEL_BUTTON', "True"
 BOT_STATS_TEXT = "<b><i>Bᴏᴛ Uᴘᴛɪᴍᴇ</i> :</b>\n{uptime}"
 
 
-
-
-
-
-
 USER_REPLY_TEXT = "<b><i>Pʟᴇᴀsᴇ Dᴏɴ'ᴛ Sᴇɴᴅ Mᴇ Mᴇssᴀɢᴇs Dɪʀᴇᴄᴛʟʏ I Aᴍ Jᴜsᴛ Fɪʟᴇ Sʜᴀʀɪɴɢ Bᴏᴛ 🫣</i></b>"
 
 START_MSG = os.environ.get("START_MESSAGE", "<b><i>» Hᴇʟʟᴏ {mention} \n\nI ᴀᴍ Pᴇʀᴍᴀɴᴇɴᴛ Fɪʟᴇ Sᴛᴏʀᴇ Bᴏᴛ.\nDᴇᴠᴇʟᴏᴘᴇᴅ Bʏ <a href='https://t.me/MyselfNeon'>NᴇᴏɴAɴᴜʀᴀɢ</a>.\n\nGᴇᴛ Rᴇᴅɪʀᴇᴄᴛᴇᴅ Fʀᴏᴍ Cᴏʀʀᴇᴄᴛ Lɪɴᴋs Tᴏ Gᴇᴛ Tʜᴇ Fɪʟᴇs 🖇️</i></b>")
 
 FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "<b><i>Hᴇʟʟᴏ {mention}\n\nYᴏᴜ Nᴇᴇᴅ ᴛᴏ Jᴏɪɴ ɪɴ Mʏ Cʜᴀɴɴᴇʟ/Gʀᴏᴜᴘ ᴛᴏ Usᴇ Mᴇ\n\n</i></b>")
-
-
-
 
 
 ADMINS.append(OWNER_ID)
