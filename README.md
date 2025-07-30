@@ -2,7 +2,7 @@
     <i>FileSharing-Bot</i>
 </h2>
 
-<img src="https://envs.sh/7gW.jpg" alt="logo" target="/blank">
+<img src="https://ibb.co/whLXNnrC" alt="logo" target="/blank">
 
 _**Watch on Telegram as [FileSharingBot](https://t.me/neonfilesbot)**_
 
