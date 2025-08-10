@@ -10,6 +10,16 @@ import pyrogram.utils
 
 pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
 
+from pyrogram import Client, filters
+from config import Config
+
+@Client.on_message(filters.incoming)
+async def auto_react(client, message):
+    if Config.AUTO_REACT_ENABLED:
+        try:
+            await message.react(Config.AUTO_REACT_EMOJI)
+        except Exception as e:
+            print(f"[AutoReact] Failed to react to message: {e}")
 
 
 class Bot(Client):
