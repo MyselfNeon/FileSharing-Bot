@@ -67,11 +67,6 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
    
-# Enable or disable auto react feature
-AUTO_REACT_ENABLED = True
-
-# Emoji used for auto reaction (can be any valid emoji like '👍', '❤️', '😂', etc.)
-AUTO_REACT_EMOJI = "👍"
 
 
 
