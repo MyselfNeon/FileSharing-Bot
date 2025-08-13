@@ -8,7 +8,7 @@ API_HASH = os.environ.get("API_HASH", "")
 
 OWNER_ID = int(os.environ.get("OWNER_ID", "841851780"))
 DB_URL = os.environ.get("DB_URL", "")
-DB_NAME = os.environ.get("DB_NAME", "neonpmt03")
+DB_NAME = os.environ.get("DB_NAME", "MyselfNeon")
 
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002487845241"))
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002384933640"))
