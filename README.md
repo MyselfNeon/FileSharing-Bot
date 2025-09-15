@@ -77,13 +77,8 @@ broadcast - Broadcast any messages to Bot Users
 stats - Check your Bot uptime
 ```
 
-<h3>Contact Developer</h3>
+<h3><i>Contact Developer 👨‍💻</i></h3>
 
-<a href="https://telegram.me/OnionXbot"><img src="https://img.shields.io/badge/-Contact%20Dev-blue.svg?style=for-the-badge&logo=Telegram"></a>
-<a href="https://telegram.me/neonfiles"><img src="https://img.shields.io/badge/-Update%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
-
-### Respecting 🌊
-
-<a href="https://github.com/myselfneon"><img src="https://img.shields.io/badge/-Developer%20-red.svg?style=for-the-badge&logo=Github"></a>
-<a href='https://github.com/myselfnron'></a>
-<a href="https://telegram.me/myselfneon"><img src="https://img.shields.io/badge/-Developer%20-blue.svg?style=for-the-badge&logo=Telegram"></a>
+[![Contact Developer](https://img.shields.io/badge/Contact-Developer-blue?logo=telegram)](https://t.me/MyselfNeon)    
+[![Telegram Channel](https://img.shields.io/badge/Telegram-Main%20Channel-blue?logo=telegram)](https://t.me/neonfiles)  
+_**Join My <a href='https://t.me/neonfiles'>Update Channel</a> For More Update Regarding Repo.**_
