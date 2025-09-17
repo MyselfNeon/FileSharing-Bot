@@ -1,14 +1,19 @@
 from aiohttp import web
 from plugins import web_server
 import pyromod.listen
-from pyrogram import Client
+from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
+from pyrogram.types import Message
 import sys
 from datetime import datetime
-from config import API_HASH, API_ID, LOGGER, BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID, PORT
+from pytz import timezone
+from config import (
+    API_HASH, API_ID, BOT_TOKEN, TG_BOT_WORKERS,
+    FORCE_SUB_CHANNEL, CHANNEL_ID, PORT, LOG_CHANNEL
+)
 import pyrogram.utils
 
-pyrogram.utils.MIN_CHANNEL_ID = -1009999999999 
+pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
 
 
 class Bot(Client):
@@ -21,13 +26,15 @@ class Bot(Client):
             workers=TG_BOT_WORKERS,
             bot_token=BOT_TOKEN
         )
-        self.LOGGER = LOGGER
 
     async def start(self):
         await super().start()
         usr_bot_me = await self.get_me()
         self.uptime = datetime.now()
+        self.username = usr_bot_me.username
+        bot_name = usr_bot_me.first_name
 
+        # Force Sub Check
         if FORCE_SUB_CHANNEL:
             try:
                 link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
@@ -36,28 +43,38 @@ class Bot(Client):
                     link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
                 self.invitelink = link
             except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning("Bᴏᴛ Cᴀɴ'ᴛ Exᴘᴏʀᴛ Iɴᴠɪᴛᴇ Lɪɴᴋ Fʀᴏᴍ Fᴏʀᴄᴇ Sᴜʙ Cʜᴀɴɴᴇʟ!")
-                self.LOGGER(__name__).warning(f"Pʟᴇᴀsᴇ Dᴏᴜʙʟᴇ Cʜᴇᴄᴋ Tʜᴇ FORCE_SUB_CHANNEL Vᴀʟᴜᴇ Aɴᴅ Mᴀᴋᴇ Sᴜʀᴇ Bᴏᴛ ɪs Aᴅᴍɪɴ ɪɴ Cʜᴀɴɴᴇʟ Wɪᴛʜ Iɴᴠɪᴛᴇ Usᴇʀs Vɪᴀ Lɪɴᴋ Pᴇʀᴍɪssɪᴏɴ, Cᴜʀʀᴇɴᴛ Fᴏʀᴄᴇ Sᴜʙ Cʜᴀɴɴᴇʟ Vᴀʟᴜᴇ: {FORCE_SUB_CHANNEL}")
-                self.LOGGER(__name__).info("\nBᴏᴛ Sᴛᴏᴘᴘᴇᴅ. https://t.me/MyselfNeon Fᴏʀ Sᴜᴘᴘᴏʀᴛ")
+                await self.send_message(
+                    LOG_CHANNEL,
+                    f"❌ Failed to get invite link for FORCE_SUB_CHANNEL\n\nError: `{a}`"
+                )
                 sys.exit()
 
+        # DB Channel Check
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel
-            test = await self.send_message(chat_id = db_channel.id, text = "**__Hᴇʟʟᴏ__ 🖐️** \n**__NᴇᴏɴFɪʟᴇsBᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ ... 👨‍💻♻️__**")
-            await test.delete()
         except Exception as e:
-            self.LOGGER(__name__).warning(e)
-            self.LOGGER(__name__).warning(f"Mᴀᴋᴇ Sᴜʀᴇ Bᴏᴛ ɪs Aᴅᴍɪɴ ɪɴ DB Cʜᴀɴɴᴇʟ, Aɴᴅ Dᴏᴜʙʟᴇ Cʜᴇᴄᴋ Tʜᴇ CHANNEL_ID Vᴀʟᴜᴇ, Cᴜʀʀᴇɴᴛ Vᴀʟᴜᴇ: {CHANNEL_ID}")
-            self.LOGGER(__name__).info("\nBᴏᴛ Sᴛᴏᴘᴘᴇᴅ. Jᴏɪɴ https://t.me/NeonFiles Fᴏʀ Sᴜᴘᴘᴏʀᴛ")
+            await self.send_message(
+                LOG_CHANNEL,
+                f"❌ Failed to connect DB channel.\nError: `{e}`\n\nCheck CHANNEL_ID: `{CHANNEL_ID}`"
+            )
             sys.exit()
 
+        # Bot Restart Log
+        ist = timezone("Asia/Kolkata")
+        now = datetime.now(ist)
+        restart_text = (
+            f"✅ <b>{bot_name} Bot Is Restarted</b>\n\n"
+            f"📅 <b>Date :</b> {now.strftime('%d-%b-%Y')}\n"
+            f"⏰ <b>Time :</b> {now.strftime('%I:%M %p')}\n"
+            f"🌐 <b>Timezone :</b> Asia/Kolkata\n"
+            f"🉐 <b>Version :</b> Pyrogram {pyrogram.__version__}"
+        )
+        await self.send_message(LOG_CHANNEL, restart_text)
+
         self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER(__name__).info(f"Bᴏᴛ Rᴜɴɴɪɴɢ...!\n\nCʀᴇᴀᴛᴇᴅ Bʏ \nhttps://t.me/NeonFiles")
-        self.LOGGER(__name__).info(f"""ミ💖✨ NEONFILES ✨💖彡""")
-        self.username = usr_bot_me.username
-        #web-response
+
+        # Web response
         app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
@@ -65,13 +82,18 @@ class Bot(Client):
 
     async def stop(self, *args):
         await super().stop()
-        self.LOGGER(__name__).info("Bᴏᴛ Sᴛᴏᴘᴘᴇᴅ...❌")
-            
+        await self.send_message(LOG_CHANNEL, "❌ Bot Stopped!")
 
 
-
-
-
-# MyselfNeon
-# Don't Remove Credit 🥺
-# Telegram Channel @NeonFiles
+# 🔹 Log New Users
+@Bot.on_message(filters.command("start") & filters.private)
+async def log_new_user(client: Bot, message: Message):
+    user = message.from_user
+    log_text = (
+        f"#𝖭𝖾𝗐𝖴𝗌𝖾𝗋 𝖲𝗍𝖺𝗋𝗍𝖾𝖽 𝖳𝗁𝖾 𝖡𝗈𝗍\n\n"
+        f"🆔 <b>User ID :</b> <code>{user.id}</code>\n"
+        f"👤 <b>Username :</b> @{user.username if user.username else 'None'}\n"
+        f"🔗 <b>User Link :</b> {user.mention}"
+    )
+    await client.send_message(LOG_CHANNEL, log_text)
+    await message.reply_text("👋 Hello! You started the bot ✅")
