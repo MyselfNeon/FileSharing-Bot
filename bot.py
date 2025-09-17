@@ -5,8 +5,7 @@ from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
 from pyrogram.types import Message
 import sys
-from datetime import datetime
-from pytz import timezone
+from datetime import datetime, timedelta, timezone
 from config import (
     API_HASH, API_ID, BOT_TOKEN, TG_BOT_WORKERS,
     FORCE_SUB_CHANNEL, CHANNEL_ID, PORT, LOG_CHANNEL
@@ -14,6 +13,9 @@ from config import (
 import pyrogram.utils
 
 pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
+
+# India Standard Time (UTC +5:30)
+IST = timezone(timedelta(hours=5, minutes=30))
 
 
 class Bot(Client):
@@ -61,8 +63,7 @@ class Bot(Client):
             sys.exit()
 
         # Bot Restart Log
-        ist = timezone("Asia/Kolkata")
-        now = datetime.now(ist)
+        now = datetime.now(IST)
         restart_text = (
             f"✅ <b>{bot_name} Bot Is Restarted</b>\n\n"
             f"📅 <b>Date :</b> {now.strftime('%d-%b-%Y')}\n"
