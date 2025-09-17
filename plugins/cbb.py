@@ -1,22 +1,21 @@
 from pyrogram import __version__
-from bot import Bot, bot_name   # import bot_name from your bot.py
+from bot import Bot  # no need to import bot_name anymore
 from config import OWNER_ID
-from pyrogram.types import (
-    Message,
-    InlineKeyboardMarkup,
-    InlineKeyboardButton,
-    CallbackQuery,
-)
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+
 
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
 
     if data == "about":
+        # Use client.username dynamically
+        bot_username = client.username or "NeonFilesBot"
+
         await query.message.edit_text(
             text=(
                 f"<b>🤖 <i>Mʏ Nᴀᴍᴇ :</i></b> "
-                f"<a href='https://t.me/{bot_name}'><b><i>{bot_name}</i></b></a>\n"
+                f"<a href='https://t.me/{bot_username}'><b><i>{bot_username}</i></b></a>\n"
                 f"<b>📝 <i>Lᴀɴɢᴜᴀɢᴇ :</i></b> "
                 f"<a href='https://python.org'><b><i>Pʏᴛʜᴏɴ 3</i></b></a>\n"
                 f"<b>📚 <i>Lɪʙʀᴀʀʏ :</i></b> "
@@ -42,7 +41,6 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             await query.message.reply_to_message.delete()
         except:
             pass
-
 
 # MyselfNeon
 # Don't Remove Credit 🥺
