@@ -11,6 +11,7 @@ from config import (
     FORCE_SUB_CHANNEL, CHANNEL_ID, PORT, LOG_CHANNEL
 )
 import pyrogram.utils
+import pyrogram  # ✅ For version info
 
 pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
 
@@ -62,12 +63,14 @@ class Bot(Client):
             )
             sys.exit()
 
-        # Bot Restart Log (Only Date & Time)
+        # Bot Restart Log (Date, Time, Timezone, Version)
         now = datetime.now(IST)
         restart_text = (
             f"**♻️ __{bot_name} Bot Is Restarted__**\n\n"
             f"**📅 __Date : {now.strftime('%d-%b-%Y')}__**\n"
-            f"**⏰ __Time : {now.strftime('%I:%M %p')}__**"
+            f"**⏰ __Time : {now.strftime('%I:%M %p')}__**\n"
+            f"**🌐 __Timezone : Asia/Kolkata               __**\n"
+            f"**🉐 __Version : Pyrogram {pyrogram.__version__}__**"
         )
         await self.send_message(LOG_CHANNEL, restart_text)
 
@@ -96,4 +99,3 @@ async def log_new_user(client: Bot, message: Message):
     )
     await client.send_message(LOG_CHANNEL, log_text)
     await message.reply_text("👋 Hello! You started the bot ✅")
-    
