@@ -65,7 +65,7 @@ class Bot(Client):
         # Bot Restart Log
         now = datetime.now(IST)
         restart_text = (
-            f"✅ <b>{bot_name} Bot Is Restarted</b>\n\n"
+            f"**✅ __{bot_name} Bot Is Restarted__**\n\n"
             f"📅 <b>Date :</b> {now.strftime('%d-%b-%Y')}\n"
             f"⏰ <b>Time :</b> {now.strftime('%I:%M %p')}\n"
             f"🌐 <b>Timezone :</b> Asia/Kolkata\n"
