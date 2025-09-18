@@ -1,12 +1,13 @@
 from pyrogram import __version__
 from bot import Bot
-from config import OWNER_ID
+from config import OWNER_ID, START_MSG
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
+    user = query.from_user or query.message.from_user
 
     if data == "about":
         bot_username = client.username or "NeonFilesBot"
@@ -38,15 +39,25 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
 
     elif data == "back":
-        # You can show your start/home menu here
-        await query.message.edit_text(
-            text="👋 Hey! Welcome back to the main menu.",
-            reply_markup=InlineKeyboardMarkup(
+        # Restore the same /start welcome screen on the same message
+        reply_markup = InlineKeyboardMarkup(
+            [
                 [
-                    [InlineKeyboardButton("ℹ️ About", callback_data="about")],
-                    [InlineKeyboardButton("🔒 Cʟᴏꜱᴇ", callback_data="close")]
+                    InlineKeyboardButton("😊 Aʙᴏᴜᴛ Mᴇ", callback_data="about"),
+                    InlineKeyboardButton("🔒 Cʟᴏꜱᴇ", callback_data="close")
                 ]
+            ]
+        )
+        await query.message.edit_text(
+            text=START_MSG.format(
+                first=user.first_name,
+                last=user.last_name,
+                username=None if not user.username else '@' + user.username,
+                mention=user.mention,
+                id=user.id
             ),
+            reply_markup=reply_markup,
+            disable_web_page_preview=True
         )
 
     elif data == "close":
