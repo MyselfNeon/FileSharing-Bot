@@ -62,14 +62,12 @@ class Bot(Client):
             )
             sys.exit()
 
-        # Bot Restart Log
+        # Bot Restart Log (Only Date & Time)
         now = datetime.now(IST)
         restart_text = (
             f"**♻️ __{bot_name} Bot Is Restarted__**\n\n"
             f"**📅 __Date : {now.strftime('%d-%b-%Y')}__**\n"
-            f"**⏰ __Time : {now.strftime('%I:%M %p')}__**\n"
-            f"**🌐 __Timezone : Asia/Kolkata__**\n"
-            f"**🉐 __Version : Pyrogram {pyrogram.__version__}__**"
+            f"**⏰ __Time : {now.strftime('%I:%M %p')}__**"
         )
         await self.send_message(LOG_CHANNEL, restart_text)
 
@@ -91,10 +89,11 @@ class Bot(Client):
 async def log_new_user(client: Bot, message: Message):
     user = message.from_user
     log_text = (
-        f"**#𝖭𝖾𝗐𝖴𝗌𝖾𝗋**\n\n"
+        f"**#𝖭𝖾𝗐𝖴𝗌𝖾𝗋 👤**\n\n"
         f"**🆔 __User ID :__** <code>{user.id}</code>\n"
         f"**👤 __Username : @{user.username if user.username else 'None'}__**\n"
         f"**🖇️ __User Link : {user.mention}__**"
     )
     await client.send_message(LOG_CHANNEL, log_text)
     await message.reply_text("👋 Hello! You started the bot ✅")
+    
