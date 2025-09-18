@@ -1,5 +1,4 @@
-# bot.py (modified)
-
+# Bot.py
 import os
 from aiohttp import web
 from plugins import web_server
@@ -112,6 +111,7 @@ async def log_new_user(client: Bot, message: Message):
     user = message.from_user
     log_text = (
         f"**#𝖭𝖾𝗐𝖴𝗌𝖾𝗋 👤**\n\n"
+        f"**__@NeonFilesBot__**\n\n"
         f"**🆔 __User ID :__** <code>{user.id}</code>\n"
         f"**👤 __Username : @{user.username if user.username else 'None'}__**\n"
         f"**🖇️ __User Link : {user.mention}__**"
