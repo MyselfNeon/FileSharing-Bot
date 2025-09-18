@@ -1,9 +1,12 @@
+# bot.py (modified)
+
+import os
 from aiohttp import web
 from plugins import web_server
 import pyromod.listen
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
-from pyrogram.types import Message
+from pyrogram.types import Message, BotCommand
 import sys
 from datetime import datetime, timedelta, timezone
 from config import (
@@ -15,8 +18,24 @@ import pyrogram  # ✅ For version info
 
 pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
 
-# India Standard Time (UTC +5:30)
 IST = timezone(timedelta(hours=5, minutes=30))
+
+
+def get_all_plugins(path="plugins"):
+    """
+    Recursively find all .py files in the plugins folder (excluding __init__.py and this loader)
+    and return a dict suitable for Client(plugins=...)
+    """
+    plugins_dict = {}
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            if file.endswith(".py") and not file.startswith("__"):
+                # get relative path from plugins folder
+                rel_path = os.path.relpath(os.path.join(root, file), path)
+                # convert path to module notation for Pyrogram
+                module_path = rel_path.replace(os.sep, ".")[:-3]  # remove .py
+                plugins_dict[module_path] = {}
+    return plugins_dict
 
 
 class Bot(Client):
@@ -25,7 +44,7 @@ class Bot(Client):
             name="Bot",
             api_hash=API_HASH,
             api_id=API_ID,
-            plugins={"root": "plugins"},
+            plugins={"root": "plugins", **get_all_plugins("plugins")},  # ✅ Auto-load all plugins
             workers=TG_BOT_WORKERS,
             bot_token=BOT_TOKEN
         )
@@ -63,7 +82,7 @@ class Bot(Client):
             )
             sys.exit()
 
-        # Bot Restart Log (Date, Time, Timezone, Version)
+        # Bot Restart Log
         now = datetime.now(IST)
         restart_text = (
             f"**♻️ __{bot_name} Bot Is Restarted__**\n\n"
