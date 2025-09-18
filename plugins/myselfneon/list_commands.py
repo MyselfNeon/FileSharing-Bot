@@ -2,7 +2,7 @@
 
 from pyrogram import Client
 from pyrogram.types import BotCommand
-from info import LOG_CHANNEL  # Import from your info.py
+from config import LOG_CHANNEL  # ✅ Import from config.py
 
 # 🔹 Your commands
 COMMANDS = [
@@ -41,7 +41,7 @@ async def set_global_commands_with_log(client: Client):
         if not added and not removed:
             log_text += "No changes detected. ✅"
 
-        # Send log to channel from info.py
+        # Send log to channel from config.py
         await client.send_message(LOG_CHANNEL, log_text)
 
         print("✅ Global commands updated successfully.")
