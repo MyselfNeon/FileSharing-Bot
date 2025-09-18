@@ -6,10 +6,12 @@ from info import LOG_CHANNEL  # Import from your info.py
 
 # 🔹 Your commands
 COMMANDS = [
-    ("/start", "Start the bot"),
-    ("/help", "Show help message"),
-    ("/id", "Get your user ID"),
-    ("/about", "About this bot"),
+    ("/start", "Start the Bot"),
+    ("/genlink", "Create Link for Single Post"),
+    ("/batch", "Create Link for Multiple Post"),
+    ("/stats", "Check Bot Uptime"),
+    ("/users", "Get Bot Statics"),
+    ("/broadcast", "Broadcast Message to Users"),
 ]
 
 @Client.on_start
