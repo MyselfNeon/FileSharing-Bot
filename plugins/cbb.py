@@ -1,5 +1,5 @@
 from pyrogram import __version__
-from bot import Bot  # no need to import bot_name anymore
+from bot import Bot
 from config import OWNER_ID
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
@@ -9,7 +9,6 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
 
     if data == "about":
-        # Use client.username dynamically
         bot_username = client.username or "NeonFilesBot"
 
         await query.message.edit_text(
@@ -30,6 +29,21 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
+                    [
+                        InlineKeyboardButton("🔙 Bᴀᴄᴋ", callback_data="back"),
+                        InlineKeyboardButton("🔒 Cʟᴏꜱᴇ", callback_data="close")
+                    ]
+                ]
+            ),
+        )
+
+    elif data == "back":
+        # You can show your start/home menu here
+        await query.message.edit_text(
+            text="👋 Hey! Welcome back to the main menu.",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [InlineKeyboardButton("ℹ️ About", callback_data="about")],
                     [InlineKeyboardButton("🔒 Cʟᴏꜱᴇ", callback_data="close")]
                 ]
             ),
@@ -41,6 +55,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             await query.message.reply_to_message.delete()
         except:
             pass
+
 
 # MyselfNeon
 # Don't Remove Credit 🥺
