@@ -6,7 +6,7 @@ routes = web.RouteTableDef()
 async def root_route_handler(request):
     return web.Response(
         text="""
-        <body style="background-color:black; color:yellow; display:flex; justify-content:center; align-items:flex-start; height:100vh; margin:0; font-family:sans-serif; padding-top:20vh; font-size:4rem;">
+        <body style="background-color:black; color:#39FF14; display:flex; justify-content:center; align-items:flex-start; height:100vh; margin:0; font-family:sans-serif; padding-top:20vh; font-size:4rem;">
             Coded By @MyselfNeon
         </body>
         """,
