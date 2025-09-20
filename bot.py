@@ -19,7 +19,6 @@ pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
-
 def get_all_plugins(path="plugins"):
     """
     Recursively find all .py files in the plugins folder (excluding __init__.py and this loader)
@@ -35,7 +34,6 @@ def get_all_plugins(path="plugins"):
                 module_path = rel_path.replace(os.sep, ".")[:-3]  # remove .py
                 plugins_dict[module_path] = {}
     return plugins_dict
-
 
 class Bot(Client):
     def __init__(self):
@@ -84,11 +82,11 @@ class Bot(Client):
         # Bot Restart Log
         now = datetime.now(IST)
         restart_text = (
-            f"**♻️ __{bot_name} Bot Is Restarted__**\n\n"
-            f"**📅 __Date : {now.strftime('%d-%b-%Y')}__**\n"
-            f"**⏰ __Time : {now.strftime('%I:%M %p')}__**\n"
-            f"**🌐 __Timezone : Asia/Kolkata            __**\n"
-            f"**🉐 __Version : Pyrogram {pyrogram.__version__}__**"
+            f"**♻️ __{bot_name} Bot Restarted__**\n\n"
+            f"**📅 __Date :__** __{now.strftime('%d-%b-%Y')}__\n"
+            f"**⏰ __Time :__** __{now.strftime('%I:%M %p')}__\n"
+            f"**🌐 __Timezone :__** __Asia/Kolkata            __**\n"
+            f"**🉐 __Version :__** __Pyrogram {pyrogram.__version__}__**"
         )
         await self.send_message(LOG_CHANNEL, restart_text)
 
@@ -104,7 +102,6 @@ class Bot(Client):
         await super().stop()
         await self.send_message(LOG_CHANNEL, "❌ Bot Stopped!")
 
-
 # 🔹 Log New Users
 @Bot.on_message(filters.command("start") & filters.private)
 async def log_new_user(client: Bot, message: Message):
@@ -113,8 +110,8 @@ async def log_new_user(client: Bot, message: Message):
         f"**#𝖭𝖾𝗐𝖴𝗌𝖾𝗋 👤**\n\n"
         f"**__@NeonFilesBot__**\n\n"
         f"**🆔 __User ID :__** <code>{user.id}</code>\n"
-        f"**👤 __Username : @{user.username if user.username else 'None'}__**\n"
-        f"**🖇️ __User Link : {user.mention}__**"
+        f"**👤 __Username :__** __@{user.username if user.username else 'None'}__\n"
+        f"**🖇️ __User Link :__** __{user.mention}__"
     )
     await client.send_message(LOG_CHANNEL, log_text)
     await message.reply_text("👋 Hello! You started the bot ✅")
