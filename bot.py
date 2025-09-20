@@ -85,8 +85,8 @@ class Bot(Client):
             f"**♻️ __{bot_name} Bot Restarted__**\n\n"
             f"**📅 __Date :__** __{now.strftime('%d-%b-%Y')}__\n"
             f"**⏰ __Time :__** __{now.strftime('%I:%M %p')}__\n"
-            f"**🌐 __Timezone :__** __Asia/Kolkata            __**\n"
-            f"**🉐 __Version :__** __Pyrogram {pyrogram.__version__}__**"
+            f"**🌐 __Timezone :__** __Asia/Kolkata            __\n"
+            f"**🉐 __Version :__** __Pyrogram {pyrogram.__version__}__"
         )
         await self.send_message(LOG_CHANNEL, restart_text)
 
